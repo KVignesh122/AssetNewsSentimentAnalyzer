@@ -1,0 +1,4 @@
+requests
+beautifulsoup4
+readability-lxml
+lxml[html_clean]
