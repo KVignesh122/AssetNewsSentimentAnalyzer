@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 from readability import Document
 from websearch import search_google, get_tbs
-from datetime import datetime
 
 REQUEST_SUCCESS = 200
 
@@ -22,6 +21,9 @@ def parse_webpage(url_link):
 
 def get_news_links(query: str, date=None) -> list:
     links = []
-    links += list(search_google(query, stop=4, pause=2, tbm="nws", tbs=date))
+    if date:
+        links += list(search_google(query, stop=4, pause=2, tbm="nws", tbs=get_tbs(date)))
+    else:
+        links += list(search_google(query, stop=4, pause=2, tbm="nws"))
     links = list(set(links))
     return links
