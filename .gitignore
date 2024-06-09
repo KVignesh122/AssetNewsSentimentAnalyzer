@@ -4,5 +4,6 @@ __pycache__/gpt_client.cpython-311.pyc
 __pycache__/scrapper.cpython-311.pyc
 __pycache__/websearch.cpython-311.pyc
 __pycache__/*
-gpt_client.py
 *.csv
+oai.py
+main-mine.py
