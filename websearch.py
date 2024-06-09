@@ -26,19 +26,15 @@ USER_AGENTS_LIST = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
-    
     # Firefox
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:88.0) Gecko/20100101 Firefox/88.0',
     'Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0',
-    
     # Safari
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15',
     'Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1',
-    
     # Edge
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.49',
-    
     # Opera
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 OPR/76.0.4017.123'
 ]
@@ -58,8 +54,8 @@ def get_random_user_agent():
 def get_tbs(preferred_date):
     """Format the tbs parameter for Google search."""
     preferred_date = to_date(preferred_date)
-    # if is_future_date(preferred_date):
-    #     raise ValueError(f"Cannot be a future date.")
+    if is_future_date(preferred_date):
+        raise ValueError(f"Cannot be a future date.")
     return 'cdr:1,cd_min:{},cd_max:{}'.format(
         preferred_date.strftime('%m/%d/%Y'), preferred_date.strftime('%m/%d/%Y')
     )
@@ -92,8 +88,8 @@ def is_future_date(input_date):
     :param input_date: A datetime.date object.
     :return: True if the input_date is in the future, False otherwise.
     """
-    if not isinstance(input_date, date):
-        raise TypeError("Input must be a datetime.date object")
+    if not isinstance(input_date, date) and not isinstance(input_date, datetime):
+        raise TypeError("Input date must be a datetime.date object")
     
     today = date.today()
     print(today, input_date)
@@ -188,6 +184,6 @@ def lucky(*args, **kwargs):
 
 
 # Example usage
-if __name__ == "__main__":
-    for url in search_google('EURUSD', stop=4, pause=1, tbm="nws", tbs=get_tbs("06/05/2024"), num=5):
-        print(url)
+# if __name__ == "__main__":
+#     for url in search_google('EURUSD analysis', stop=4, pause=1, tbm="nws", tbs=get_tbs("06/06/2024")):
+#         print(url)
