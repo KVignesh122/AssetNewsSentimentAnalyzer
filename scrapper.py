@@ -1,39 +1,13 @@
 from bs4 import BeautifulSoup
-import requests
 from readability import Document
-from websearch import search_google, get_tbs
-import random
+from websearch_funcs import search_google, get_tbs
 import aiohttp
 import asyncio
+from utils import get_random_user_agent
 
-# REQUEST_SUCCESS = 200
-
-
-# def parse_webpage(url_link):
-#     try:
-#         response = requests.get(url_link)
-#         if response.status_code == REQUEST_SUCCESS:
-#             doc = Document(response.content)
-#             soup = BeautifulSoup(doc.summary(), 'html.parser')
-#             return soup.get_text(strip=True)
-#         return ''
-#     except Exception as e:
-#         print(f"Error: {e}")
-#         return ''
-
-# List of user agents for requests
-USER_AGENTS_LIST = [
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
-    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
-    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0',
-    'Mozilla/5.0 (iPhone; CPU iPhone OS 14_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Mobile/15E148 Safari/604.1',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 Edg/90.0.818.49',
-    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 OPR/76.0.4017.123'
-]
 
 async def fetch(session, url):
-    headers = {'User-Agent': random.choice(USER_AGENTS_LIST)}
+    headers = {'User-Agent': get_random_user_agent()}
     try:
         timeout = aiohttp.ClientTimeout(total=60)  # Increasing the total timeout to 60 seconds
         await asyncio.sleep(0.5)
@@ -45,6 +19,7 @@ async def fetch(session, url):
     except asyncio.TimeoutError:
         print("The request timed out")
         return None
+
 
 async def parse_webpage(url_link):
     async with aiohttp.ClientSession() as session:
