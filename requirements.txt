@@ -1,4 +1,5 @@
 requests
 beautifulsoup4
 readability-lxml
-lxml[html_clean]
+lxml_html_clean
+tiktoken

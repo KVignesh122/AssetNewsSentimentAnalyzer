@@ -42,7 +42,6 @@ def get_news_links(asset_name: str, date=None) -> list:
     ]
     i = 0
     
-    print("Entering search")
     while len(links) < 4 and i <= 3:
         if date:
             links += list(search_google(additional_queries[i], stop=4, pause=0.5, tbm="nws", tbs=get_tbs(date)))
@@ -50,6 +49,5 @@ def get_news_links(asset_name: str, date=None) -> list:
             links += list(search_google(additional_queries[i], stop=4, pause=0.5, tbm="nws"))
         links = list(set(links))
         i += 1
-    print("Exiting search")
     
     return links

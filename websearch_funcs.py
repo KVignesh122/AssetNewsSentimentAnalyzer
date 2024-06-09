@@ -65,7 +65,7 @@ def is_future_date(input_date):
 def get_page(url, user_agent=None, verify_ssl=True):
     """Retrieve a webpage with optional SSL verification."""
     if user_agent is None:
-        user_agent = get_random_user_agent()
+        user_agent = utils.get_random_user_agent()
     request = Request(url, headers={'User-Agent': user_agent})
     cookie_jar.add_cookie_header(request)
     
@@ -123,6 +123,6 @@ def search_google(query, tld='com', lang='en', tbs='0', safe='off',
 
 
 # Example usage
-# if __name__ == "__main__":
-#     for url in search_google('EURUSD analysis', stop=4, pause=1, tbm="nws", tbs=get_tbs("06/06/2023")):
-#         print(url)
+if __name__ == "__main__":
+    for url in search_google('EURUSD analysis', stop=4, pause=1, tbm="nws", tbs=get_tbs("06/06/2023")):
+        print(url)

@@ -32,7 +32,7 @@ def chunk(text: str, max_token_len=3000):
     return text
 
 
-def get_gpt_response(user_prompt: str, openai_key: str, preferred_model="gpt-3.5-turbo", system_instruction=None):
+def get_gpt_response(user_prompt: str, openai_key: str, generation_tk_limit=None, preferred_model="gpt-3.5-turbo", system_instruction=None):
     client = OpenAI(api_key=openai_key)
 
     if system_instruction is not None:
@@ -48,6 +48,6 @@ def get_gpt_response(user_prompt: str, openai_key: str, preferred_model="gpt-3.5
     response = client.chat.completions.create(
         model=preferred_model,
         messages=gpt_prompt,
-        max_tokens=10
+        max_tokens=generation_tk_limit
     )
     return response.choices[0].message.content
