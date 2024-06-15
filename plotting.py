@@ -21,12 +21,13 @@ print(f"Final Cumulative Strategy Return: {final_strategy_return:.2f}")
 
 # Top subplot: Scatter plot of Mean prices with trading signals
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10), sharex=True)
-colors = ["green" if s==1 else "red" if s==-1 else "blue" for s in results_df['Sentiment']]
+colors = ["green" if s==1 else "red" if s==-1 else "blue" for s in results_df['Signal']]
 
 # Top subplot: Scatter plot of Mean prices with trading signals
 results_df['Date'] = pd.to_datetime(results_df['Date']).dt.date
-# ax1.scatter(results_df['Date'], results_df['Open'], label='Open', alpha=0.5)
-ax1.scatter(results_df['Date'], results_df['Mean'], c=colors, label='Signals')
+# ax1.scatter(results_df['Date'], results_df['Open'], label='Open Price', alpha=0.5, c="lightblue")
+# ax1.scatter(results_df['Date'], results_df['Close'], label='Close Price', alpha=0.5, c="darkgrey")
+ax1.scatter(results_df['Date'], results_df['Mean'], c=colors, label='SIGNALS\nGreen: Bullish\nRed: Bearish')
 ax1.set_title('Mean Prices with Sentiment Signals')
 ax1.set_ylabel('Mean Price')
 ax1.legend()
@@ -34,15 +35,15 @@ ax1.legend()
 # Bottom subplot: Cumulative returns
 ax2.plot(results_df['Date'], results_df['Cumulative_Return'], label='Market Return', color='blue')
 ax2.plot(results_df['Date'], results_df['Cumulative_Strategy_Return'], label='Strategy Return', color='orange')
-ax2.set_title('Market Return vs. Strategy Return')
+ax2.set_title('Market Return vs. Sentiment Analysis Strategy Return')
 ax2.set_xlabel('Date')
 ax2.set_ylabel('Cumulative Return')
 ax2.legend()
 
 # Display final cumulative returns on the plot
-textstr = f'Final Cumulative Market Return: {final_market_return:.2f}\n'
-textstr += f'Final Cumulative Strategy Return: {final_strategy_return:.2f}'
-ax2.text(0.05, 0.95, textstr, transform=ax2.transAxes, fontsize=10, verticalalignment='top', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
+textstr = f'Final Cumulative Market Return: {((final_market_return-1)*100):.2f}%\n'
+textstr += f'Final Cumulative Strategy Return: {((final_strategy_return-1)*100):.2f}%'
+ax2.text(0.18, 0.95, textstr, transform=ax2.transAxes, fontsize=10, verticalalignment='top', bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.5))
 
 # Set x-axis major locator to every 5th entry and rotate date labels for better visibility
 ax2.xaxis.set_major_locator(mdates.DayLocator(interval=10))  # Assuming the 'Date' is a datetime object
@@ -50,4 +51,5 @@ plt.setp(ax1.xaxis.get_majorticklabels(), rotation=45)
 plt.setp(ax2.xaxis.get_majorticklabels(), rotation=45)
 
 plt.tight_layout()
+# plt.savefig("NVIDIA.jpg")
 plt.show()

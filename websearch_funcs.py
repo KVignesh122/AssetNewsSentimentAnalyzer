@@ -21,6 +21,10 @@ except Exception:
 
 def get_tbs(preferred_date):
     """Format the tbs parameter for Google search."""
+    
+    if preferred_date == '0':
+        return '0'
+        
     preferred_date = to_date(preferred_date)
     if is_future_date(preferred_date):
         raise ValueError(f"Cannot be a future date.")

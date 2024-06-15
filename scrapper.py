@@ -31,7 +31,7 @@ async def parse_webpage(url_link):
         return ''
 
 
-def get_news_links(asset_name: str, date=None) -> list:
+def get_news_links(asset_name: str, nlinks: int, date=None) -> list:
     links = []
     
     additional_queries = [
@@ -42,11 +42,12 @@ def get_news_links(asset_name: str, date=None) -> list:
     ]
     i = 0
     
-    while len(links) < 4 and i <= 3:
+    while len(links) < nlinks and i <= 3:
+        articles_needed = nlinks - len(links)
         if date:
-            links += list(search_google(additional_queries[i], stop=4, pause=0.5, tbm="nws", tbs=get_tbs(date)))
+            links += list(search_google(additional_queries[i], stop=articles_needed, pause=0.5, tbm="nws", tbs=get_tbs(date)))
         else:
-            links += list(search_google(additional_queries[i], stop=4, pause=0.5, tbm="nws"))
+            links += list(search_google(additional_queries[i], stop=articles_needed, pause=0.5, tbm="nws"))
         links = list(set(links))
         i += 1
     
