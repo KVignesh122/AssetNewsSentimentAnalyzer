@@ -1,6 +1,5 @@
 import asyncio
 import websearch_funcs
-import gpt_client
 
 from scrapper import get_news_links, parse_webpage
 from datetime import datetime
@@ -113,7 +112,7 @@ class WebInteractor():
         return asyncio.run(parse_webpage(url))
     
     def get_llm_response(self, prompt, openai_api_key, generation_tk_limit=None, gpt_model="gpt-3.5-turbo", system_instruction=None):
-        return gpt_client.get_gpt_response(
+        return get_gpt_response(
                 user_prompt=prompt,
                 openai_key=openai_api_key,
                 generation_tk_limit=generation_tk_limit,

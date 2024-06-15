@@ -3,3 +3,5 @@ beautifulsoup4
 readability-lxml
 lxml_html_clean
 tiktoken
+openai
+aiohttp

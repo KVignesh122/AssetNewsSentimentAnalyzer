@@ -1,5 +1,4 @@
 import os
-import random
 import time
 import ssl
 from http.cookiejar import LWPCookieJar

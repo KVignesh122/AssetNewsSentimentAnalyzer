@@ -1,4 +1,3 @@
-from oai import MY_KEY
 from openai import OpenAI
 import tiktoken
 
