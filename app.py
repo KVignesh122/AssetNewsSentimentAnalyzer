@@ -78,7 +78,7 @@ class SentimentAnalyzer:
         for idx, link in enumerate(links, start=1):
             news += f"""
                 Article {idx}:
-                "{await parse_webpage(link)}"\n
+                "{await parse_webpage(link)}"
                 """
         return news
     
