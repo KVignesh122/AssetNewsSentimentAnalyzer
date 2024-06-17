@@ -4,7 +4,7 @@ This application provides two sophisticated tools catering to sentimental analys
 
 ## Two Main Classes
 
-### SentimentAnalyzer Tool
+### 1. SentimentAnalyzer Tool
 
 The `SentimentAnalyzer` class allows users to perform sentiment analysis on news articles related to a specific financial asset for any given date. It fetches news links, retrieves the content, and if desired, uses GPT models to generate reports and assess market sentiment.
 
@@ -46,7 +46,7 @@ __Available Methods:__
 
 Note: All dates must be in `MM-dd-YYYY` format or must be passed as a `datetime.datetime` object into the methods.
 
-### WebInteractor Tool
+### 2. WebInteractor Tool
 
 The `WebInteractor` class provides functionalities to interact with web content, perform Google searches, and retrieve content, which can then be fed into a GPT client for further interaction.
 
