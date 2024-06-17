@@ -11,7 +11,7 @@ The `SentimentAnalyzer` class allows users to perform sentiment analysis on news
 **Usage**
 
 ```python
-from asset-sentiment-analyzer import SentimentAnalyzer
+from asset_sentiment_analyzer import SentimentAnalyzer
 
 # Initialize the analyzer
 analyzer = SentimentAnalyzer(asset='Crude Oil', openai_key='your-openai-key')
@@ -35,9 +35,10 @@ print(report)
 
 **API Reference**
 
-* `SentimentAnalyzer(<asset_name>)`: Initializes the SentimentAnalyzer object with specified asset and optional OpenAI key (`openai_key` parameter) and model selection (`model` parameter). 
+* `SentimentAnalyzer(<asset_name>)`: Initializes the SentimentAnalyzer object with specified asset and optional OpenAI key (`openai_key` parameter) and model selection (`model` parameter).
 
 __Available Methods:__
+
 * `.fetch_news_links()`: Fetches news links from Google Search News tab for the specified asset on the given date. If `news_date` parameter is not assigned, it will retrieve the current day's latests news links. `nlinks` parameter denotes the number of news links to retrieve, default is `4`.
 * `.show_news_content(<news_url>)`: Parses and returns main content as string for a given news URL.
 * `.get_sentiment()`: Analyzes online results automatically and returns the news sentiment for asset/security on any given date. If `date` parameter is not assigned, it will return the current day's latest sentiment verdict.
@@ -52,7 +53,7 @@ The `WebInteractor` class provides functionalities to interact with web content,
 **Usage**
 
 ```python
-from asset-sentiment-analyzer import WebInteractor
+from asset_sentiment_analyzer import WebInteractor
 
 # Initialize the WebInteractor
 web_interactor = WebInteractor()
@@ -77,35 +78,37 @@ print(response)
 
 **API Reference**
 
-* `WebInteractor()`: Initializes a WebInteractor object which provides functionalities for interacting with web content and performing web searches. 
+* `WebInteractor()`: Initializes a WebInteractor object which provides functionalities for interacting with web content and performing web searches.
 
 __Available Methods:__
+
 * `.search_google(<query>)`: Searches Google for the specified query and retrieves a list of unique links. Parameters:
-    * `query` (str): The search query.
-    * `tld` (str, optional): The top-level domain for Google (eg. 'com' for Google.com).
-    * `lang` (str, optional): The language setting for the Google search.
-    * `date` (str, optional): The date to refine search results. (`MM-dd-YYYY` format)
-    * `country` (str, optional): The country setting for Google search results.
-    * `tab` (str, optional): Specifies the tab under which the search is performed, allowing for specific types of search results.
-    * Possible values include:
-        - `'app'` for Applications
-        - `'blg'` for Blogs
-        - `'bks'` for Books
-        - `'dsc'` for Discussions
-        - `'isch'` for Images
-        - `'nws'` for News
-        - `'pts'` for Patents
-        - `'plcs'` for Places
-        - `'rcp'` for Recipes
-        - `'shop'` for Shopping
-        - `'vid'` for Video
-    * `nlinks` (int, optional): The number of links to retrieve.
+  * `query` (str): The search query.
+  * `tld` (str, optional): The top-level domain for Google (eg. 'com' for Google.com).
+  * `lang` (str, optional): The language setting for the Google search.
+  * `date` (str, optional): The date to refine search results. (`MM-dd-YYYY` format)
+  * `country` (str, optional): The country setting for Google search results.
+  * `tab` (str, optional): Specifies the tab under which the search is performed, allowing for specific types of search results.
+  * Possible values include:
+    - `'app'` for Applications
+    - `'blg'` for Blogs
+    - `'bks'` for Books
+    - `'dsc'` for Discussions
+    - `'isch'` for Images
+    - `'nws'` for News
+    - `'pts'` for Patents
+    - `'plcs'` for Places
+    - `'rcp'` for Recipes
+    - `'shop'` for Shopping
+    - `'vid'` for Video
+  * `nlinks` (int, optional): The number of links to retrieve.
 * `.get_webpage_main_content(<url>)`: Fetches the main content of a webpage.
 * `.get_llm_response(<prompt>, <openai_api_key>)`: A method to interact with a GPT language model based on a specified prompt and retrieve its response.
 
 ## Installation
 
 Project has been published on pip
+
 ```bash
 pip install asset-sentiment-analyzer
 ```
