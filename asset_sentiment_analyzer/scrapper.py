@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
 from readability import Document
-from websearch_funcs import search_google, get_tbs
+from .websearch_funcs import search_google, get_tbs
 import aiohttp
 import asyncio
-from utils import get_random_user_agent
+from .utils import get_random_user_agent
 
 
 async def fetch(session, url):

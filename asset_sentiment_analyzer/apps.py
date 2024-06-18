@@ -1,9 +1,9 @@
 import asyncio
-import websearch_funcs
+from . import websearch_funcs
 
-from scrapper import get_news_links, parse_webpage
+from .scrapper import get_news_links, parse_webpage
 from datetime import datetime
-from gpt_client import chunk, get_gpt_response, ANALYSER_INSTR
+from .gpt_client import chunk, get_gpt_response, ANALYSER_INSTR
 
 
 class SentimentAnalyzer:
@@ -48,8 +48,8 @@ class SentimentAnalyzer:
             assert(self.news_links is not None)
             return self.news_links
         
-        self.date_of_interest = news_date
         self.news_links = get_news_links(self.asset, nlinks, news_date)
+        self.date_of_interest = news_date
         return self.news_links
     
     def show_news_content(self, news_url):

@@ -6,7 +6,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import quote_plus, urlparse, parse_qs
 from bs4 import BeautifulSoup
 from datetime import datetime, date
-import utils
+from . import utils
 
 # Initialize cookie jar at script directory
 current_folder = os.path.dirname(os.path.abspath(__file__))
@@ -123,9 +123,3 @@ def search_google(query, tld='com', lang='en', tbs='0', safe='off',
         
         if count == len(results):
             break
-
-
-# Example usage
-if __name__ == "__main__":
-    for url in search_google('EURUSD analysis', stop=4, pause=1, tbm="nws", tbs=get_tbs("06/06/2023")):
-        print(url)
