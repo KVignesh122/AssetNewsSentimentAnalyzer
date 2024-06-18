@@ -8,6 +8,6 @@ __pycache__/*
 oai.py
 main-mine.py
 websearch copy.py
-*.jpg
 plotting.py
 sbc.py
+*.pyc

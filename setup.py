@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='asset_sentiment_analyzer',
-    version='0.1.3',
+    version='0.1.4',
     description='A sentiment analyzer package for financial assets and securities utilizing GPT models.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
