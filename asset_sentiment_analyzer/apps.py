@@ -64,7 +64,7 @@ class SentimentAnalyzer:
         """
         return asyncio.run(parse_webpage(news_url))
 
-    async def get_all_news_content(self, links):
+    async def __get_all_news_content(self, links):
         """
         Asynchronously retrieves and concatenates the content from a list of news URLs.
         
@@ -82,7 +82,7 @@ class SentimentAnalyzer:
                 """
         return news
     
-    def construct_report_prompt(self, max_words, news):
+    def __construct_report_prompt(self, max_words, news):
         return f"""Write out a short and impactful report with key insights 
                 for {self.asset} from these given information:
                 {news}
@@ -108,16 +108,16 @@ class SentimentAnalyzer:
         
         links = self.fetch_news_links(date)
         
-        news = asyncio.run(self.get_all_news_content(links))
+        news = asyncio.run(self.__get_all_news_content(links))
         news = chunk(news)
         text = get_gpt_response(
-                user_prompt=self.construct_report_prompt(max_words, news),
+                user_prompt=self.__construct_report_prompt(max_words, news),
                 openai_key=self.oai_key,
                 preferred_model=self.model
             )
         return text
 
-    def construct_sentiment_prompt(self, news):
+    def __construct_sentiment_prompt(self, news):
         return f"""Based on all your knowlege of financial markets and textual analysis, 
             assess information from all these articles and determine if the sentiment for {self.asset} 
             is mainly bullish, bearish, or neutral:
@@ -145,10 +145,10 @@ class SentimentAnalyzer:
         links = self.fetch_news_links(date)
         assert(len(links) <= 4)
         
-        news = asyncio.run(self.get_all_news_content(links))
+        news = asyncio.run(self.__get_all_news_content(links))
         news = chunk(news)
         sentiment = get_gpt_response(
-            user_prompt=self.construct_sentiment_prompt(news),
+            user_prompt=self.__construct_sentiment_prompt(news),
             openai_key=self.oai_key,
             generation_tk_limit=10,
             preferred_model=self.model,
