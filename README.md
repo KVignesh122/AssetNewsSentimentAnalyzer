@@ -1,6 +1,6 @@
 # Asset News Sentiment Analyzer
 
-This application provides two sophisticated tools catering to sentiment analysis of financial assets and securities through Google search results and online news articles. You will just need an OpenAI API Key to get started and utilize the power of all the functionalities provided by this package, namely to fetch news articles, analyze their content, and produce insightful reports for investment and trading decisions.
+This application provides two sophisticated tools catering to sentiment analysis of financial assets and securities by using ChatGPT on Google search results and online news articles. You will just need an OpenAI API Key to get started and utilize the power of all the functionalities provided by this package, namely to fetch news articles, analyze their content, and produce insightful reports for investment and trading decisions.
 
 A simple trading strategy involving daily sentiment analysis signals from this package may provide basic market traction of the target asset (We did a sample backtest on commodities over the past 100 market days):
 
