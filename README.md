@@ -1,3 +1,11 @@
+> **Looking for stabilized versions of my own live trading strategies/bots?**
+>
+> Check out **SkyBlue HorizonEdge** series (**HE Alex** and **HE Realm**): [skybluefin.tech/HorizonEdge](https://skybluefin.tech/HorizonEdge)
+>
+> Setup instructions: [skybluefin.tech/HE-Setup](https://skybluefin.tech/HE-Setup)
+>
+> After setup, message me so I can guide you on configuring the stop-loss killswitch.
+
 # Asset News Sentiment Analyzer
 
 This application provides two sophisticated tools catering to sentiment analysis of financial assets and securities by using ChatGPT on Google search results and online news articles. You will just need an OpenAI API Key to get started and utilize the power of all the functionalities provided by this package, namely to fetch news articles, analyze their content, and produce insightful reports for investment and trading decisions.
